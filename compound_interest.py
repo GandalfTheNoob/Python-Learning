@@ -21,7 +21,7 @@
 # t = the number of years the money is invested or borrowed for
 #######
 
-from decimal import Decimal
+from decimal import Decimal, getcontext
 
 # declare & assign variables
 
@@ -31,13 +31,16 @@ amortPeriod = 0         #number of years to be amortized
 calcPerYear = 0         #number of times per year amortization occurs
 
 # Get user input for each variable needed
-annualInterest = float(raw_input("Enter the annual interest rate: "))
-initialAmount = float(raw_input("Enter the amount of starting money: "))
-amortPeriod = int(raw_input("Enter the number of years to be amortized: "))
-calcPerYear = int(raw_input("Enter the number of times per year the amoritization calculation occurs: "))
+annualInterest = Decimal(raw_input("Enter the annual interest rate: "))
+initialAmount = Decimal(raw_input("Enter the amount of starting money: "))
+amortPeriod = Decimal(raw_input("Enter the number of years to be amortized: "))
+calcPerYear = Decimal(raw_input("Enter the number of times per year the amoritization calculation occurs: "))
 
 # Assign totalSum to the formula using the imported Decimal module
 totalSum = Decimal(initialAmount * (1 + ((annualInterest/100) / calcPerYear)) ** (calcPerYear * amortPeriod))
 
 # Print out the calculation
-print "The total interest and initial amount after", amortPeriod, "years of compounding is: ", totalSum.quantize(Decimal('1.00'))
+print "The total interest and initial amount after", amortPeriod, "years of compounding is: $", totalSum.quantize(Decimal('1.00'))
+getcontext().prec=8
+#Print out the interest earned over the entire period
+print "The interest earned over {} years is ${}".format(amortPeriod, (totalSum - initialAmount).quantize(Decimal('1.00')))
