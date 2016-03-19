@@ -1,4 +1,4 @@
-# Compound Interest Calculator v0.02
+# Compound Interest Calculator v0.10
 # Created by GandalfTheNoob
 # Date: March 2016 - ????
 # This calculator will ask the user for: initial amount, annual interest rate,
@@ -54,6 +54,28 @@ calc_int_earned(annualInterest, initialAmount, amortPeriod, calcPerYear)
 # TO-DO v0.10
 # Create a method to show a calc by calc table of beginning, interest earned,
 # and ending balance.
+
+def calc_table(annInt, iniAmt, amoPer, perYear):
+    currentSum = iniAmt
+    intRate = (annInt / perYear)/100
+    print "passed interest: ", annInt
+    print "passed amoortization period:", perYear
+    print "calculted interest rate:", intRate
+    intCalc = intRate * currentSum
+    i = 1
+    totalSum = currentSum + intCalc
+    print "____________________" #20lines
+    while i < (amoPer * perYear)+1:
+        print "|", i, "|", currentSum, "|", intRate * currentSum, "|", currentSum + (intRate * currentSum), "|"
+        i += 1
+        currentSum += (intRate * currentSum)
+    print "____________________" #20lines
+    return currentSum
+
+#call the calc_table method
+calc_table(annualInterest, initialAmount, amortPeriod, calcPerYear)
+
+
 
 
 # TO-DO v0.20

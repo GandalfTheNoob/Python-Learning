@@ -48,6 +48,48 @@ def calc_int_earned(annInt, iniAmt, amoPer, perYear):
     #Print out the interest earned over the entire period
     print "The interest earned over {} years is ${}".format(amoPer, (totalSum - iniAmt).quantize(Decimal('1.00')))
 
+# Call the method using user input
 calc_int_earned(annualInterest, initialAmount, amortPeriod, calcPerYear)
 
+# TO-DO v0.10
+# Create a method to show a calc by calc table of beginning, interest earned,
+# and ending balance.
 
+def calc_table(annInt, iniAmt, amoPer, perYear):
+    currentSum = iniAmt
+    intRate = (annInt / perYear)/100
+    print "passed interest: ", annInt
+    print "passed amoortization period:", perYear
+    print "calculted interest rate:", intRate
+    intCalc = intRate * currentSum
+    i = 1
+    totalSum = currentSum + intCalc
+    print "____________________" #20lines
+    while i < (amoPer * perYear)+1:
+        print "|", i, "|", currentSum, "|", intRate * currentSum, "|", currentSum + (intRate * currentSum), "|"
+        i += 1
+        currentSum += (intRate * currentSum)
+    print "____________________" #20lines
+    return currentSum
+
+#call the calc_table method
+calc_table(annualInterest, initialAmount, amortPeriod, calcPerYear)
+
+
+# TO-DO v0.20
+# Create a method that compares 3 user-defined interst rates to compare over time.
+# This method will be a general result that displays beginning, end, and interest earned
+# for each of the requested interest rates.
+
+
+# TO-DO v0.30
+# Create a method that displays takes a users' request for ending and starting balance and
+# years of compound interest to find out what interest rate they need to get
+# the end balance in the number of years entered.
+
+
+# TO-DO v0.40
+# Create a start menu to select via number which type of calculation they want to run.
+
+# TO-DO v.50
+# ????
