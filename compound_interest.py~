@@ -1,4 +1,4 @@
-# Compound Interest Calculator v0.02
+# Compound Interest Calculator v0.10
 # Created by GandalfTheNoob
 # Date: March 2016 - ????
 # This calculator will ask the user for: initial amount, annual interest rate,
@@ -64,23 +64,37 @@ def calc_table(annInt, iniAmt, amoPer, perYear):
     intCalc = intRate * currentSum
     i = 1
     totalSum = currentSum + intCalc
-    print "____________________" #20lines
+    print "_________________________________"
     while i < (amoPer * perYear)+1:
         print "|", i, "|", currentSum, "|", intRate * currentSum, "|", currentSum + (intRate * currentSum), "|"
         i += 1
         currentSum += (intRate * currentSum)
-    print "____________________" #20lines
+    print "_________________________________"
     return currentSum
 
 #call the calc_table method
 calc_table(annualInterest, initialAmount, amortPeriod, calcPerYear)
 
 
+
+
 # TO-DO v0.20
-# Create a method that compares 3 user-defined interst rates to compare over time.
+# Create a method that compares 3 user-defined interest rates to compare over time.
 # This method will be a general result that displays beginning, end, and interest earned
 # for each of the requested interest rates.
 
+first_int = Decimal(raw_input("Enter the 1st rate to be compared:"))
+second_int = Decimal(raw_input("Enter the 2nd rate to be compared:"))
+third_int = Decimal(raw_input("Enter the 3rd rate to be compared:"))
+
+print "The first interest rate,", first_int, "%"
+calc_int_earned(first_int, initialAmount, amortPeriod, calcPerYear)
+print ""
+print "The second interest rate,", second_int, "%"
+calc_int_earned(second_int, initialAmount, amortPeriod, calcPerYear)
+print ""
+print "The third interest rate,", third_int, "%"
+calc_int_earned(third_int, initialAmount, amortPeriod, calcPerYear)
 
 # TO-DO v0.30
 # Create a method that displays takes a users' request for ending and starting balance and
