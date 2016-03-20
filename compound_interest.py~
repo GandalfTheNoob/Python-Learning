@@ -1,4 +1,4 @@
-# Compound Interest Calculator v0.10
+# Compound Interest Calculator v0.20
 # Created by GandalfTheNoob
 # Date: March 2016 - ????
 # This calculator will ask the user for: initial amount, annual interest rate,
@@ -24,7 +24,7 @@
 from decimal import Decimal, getcontext
 
 # declare & assign variables
-
+getcontext().prec=8
 annualInterest = 0.0    #annual interest to be compounded
 initialAmount = 0.0     #initial amount of money to be calculated
 amortPeriod = 0         #number of years to be amortized
@@ -44,7 +44,7 @@ def calc_int_earned(annInt, iniAmt, amoPer, perYear):
 
     # Print out the calculation
     print "The total interest and initial amount after", amoPer, "years of compounding is: $", totalSum.quantize(Decimal('1.00'))
-    getcontext().prec=8
+
     #Print out the interest earned over the entire period
     print "The interest earned over {} years is ${}".format(amoPer, (totalSum - iniAmt).quantize(Decimal('1.00')))
 
@@ -100,7 +100,20 @@ calc_int_earned(third_int, initialAmount, amortPeriod, calcPerYear)
 # Create a method that displays takes a users' request for ending and starting balance and
 # years of compound interest to find out what interest rate they need to get
 # the end balance in the number of years entered.
+# formula: final/initial ^ (1/years)-1
 
+def ror():
+    
+    print "interest rate needed to earn a final amount after depositing an initial amount over a certain number of years."
+    print ""
+
+    final_amt = Decimal(raw_input("How much is your final amount?"))
+    begin_amt = Decimal(raw_input("How much will you start with?"))
+    years_amt = Decimal(raw_input("How many years will this initial amount have to compound?"))
+    ror = (final_amt / begin_amt).exp((1/years_amt)-1)
+    print "You will need:", ror, "% to get $", final_amt, "after", years_amt, "years."
+
+ror()
 
 # TO-DO v0.40
 # Create a start menu to select via number which type of calculation they want to run.
