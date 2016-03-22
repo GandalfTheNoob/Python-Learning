@@ -103,14 +103,14 @@ calc_int_earned(third_int, initialAmount, amortPeriod, calcPerYear)
 # formula: final/initial ^ (1/years)-1
 
 def ror():
-    
     print "interest rate needed to earn a final amount after depositing an initial amount over a certain number of years."
     print ""
 
     final_amt = Decimal(raw_input("How much is your final amount?"))
     begin_amt = Decimal(raw_input("How much will you start with?"))
     years_amt = Decimal(raw_input("How many years will this initial amount have to compound?"))
-    ror = (final_amt / begin_amt).exp((1/years_amt)-1)
+    ror = Decimal((final_amt / begin_amt)**(1/years_amt)-1).quantize(Decimal('0.01'))*100
+    print ror
     print "You will need:", ror, "% to get $", final_amt, "after", years_amt, "years."
 
 ror()
