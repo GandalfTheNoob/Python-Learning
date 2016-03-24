@@ -109,4 +109,5 @@ pprint.pprint(dir(loggedin))
 #                            'subscribe',
 #                             'unsubscribe',
 #                              'update_settings',
-#                               'upload_image']
+#                               'upload_image'] test test testing VIM
+#what is love? Baby don't hurt me, no more. Testing VIM..

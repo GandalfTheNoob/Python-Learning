@@ -106,17 +106,23 @@ def ror():
     print "interest rate needed to earn a final amount after depositing an initial amount over a certain number of years."
     print ""
 
-    final_amt = Decimal(raw_input("How much is your final amount?"))
-    begin_amt = Decimal(raw_input("How much will you start with?"))
-    years_amt = Decimal(raw_input("How many years will this initial amount have to compound?"))
-    ror = Decimal((final_amt / begin_amt)**(1/years_amt)-1).quantize(Decimal('0.01'))
+    final_amt = float(raw_input("How much is your final amount?"))
+    begin_amt = float(raw_input("How much will you start with?"))
+    years_amt = int(raw_input("How many years will this initial amount have to compound?"))
+    ror = ((final_amt / begin_amt)**(1/float(years_amt))-1)*100
     print ror
-    print "You will need:", ror, "% to get $", final_amt, "after", years_amt, "years."
+    
+    print "You will need: %0.2f percent to get $ %0.2f after %i years." %(ror, final_amt, years_amt)
 
 ror()
 
 # TO-DO v0.40
 # Create a start menu to select via number which type of calculation they want to run.
+# We have currently have three options:
+# 1. Interest earned & Total
+# 2. Compound Interest table
+# 3. Interest Rate Compare
+# 4. What interest rate do I need?
 
 # TO-DO v.50
-# ????
+# Work on GUI
